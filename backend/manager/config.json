@@ -1,0 +1,77 @@
+{
+  "llama": {
+    "name": "qwen3.6-35b-a3b",
+    "llama_dir": "/home/balth/Jarvis/llama.cpp",
+    "model": "/home/balth/Jarvis/models/Qwen 3.6 35b/Qwen3.6-35B-A3B-Q4_K_S-4.22bpw.gguf",
+    "host": "0.0.0.0",
+    "client_host": "127.0.0.1",
+    "port": 8081,
+    "ctx": 25000,
+    "ngl": 99,
+    "args": [
+      "-fa", "1",
+      "--cache-type-k", "q8_0",
+      "--cache-type-v", "q8_0",
+      "--jinja",
+      "--chat-template-file", "/home/balth/Jarvis/models/Qwen 3.6 35b/chat_template.jinja",
+      "--load-mode", "none",
+      "--temp", "0.7",
+      "--top-p", "0.95",
+      "--min-p", "0.05",
+      "--presence-penalty", "0.5",
+      "--repeat-penalty", "1.05",
+      "-ncmoe", "32",
+      "-b", "4096",
+      "-ub", "4096",
+      "--reasoning-preserve",
+      "--cache-ram", "2048"
+    ]
+  },
+  "chat_proxy": {
+    "host": "0.0.0.0",
+    "client_host": "127.0.0.1",
+    "port": 9000
+  },
+  "planner": {
+    "model": "qwen3.6-35b-a3b",
+    "temperature": 0.2,
+    "timeout_seconds": 120
+  },
+  "pipelines": {
+    "normal": {
+      "top_k": 30,
+      "max_full_entries": 5,
+      "max_summaries": 3,
+      "max_diary_queries": 3,
+      "max_web_queries": 3
+    },
+    "fast": {
+      "top_k": 15,
+      "max_full_entries": 2,
+      "max_summaries": 1,
+      "max_diary_queries": 1,
+      "max_web_queries": 1
+    }
+  },
+  "web": {
+    "searxng_url": "http://localhost:8080",
+    "firecrawl_api_key": "MY_KEY"
+  },
+  "voice": {
+    "host": "0.0.0.0",
+    "port": 9100,
+    "input_sample_rate": 48000,
+    "realtime_stt_url": "ws://127.0.0.1:8080/v1/audio/transcriptions/realtime",
+    "language": "fr-FR",
+    "endpointing_ms": 0,
+    "debug_upstream": false,
+    "tts": {
+      "model_dir": "../audio/tts/assets",
+      "voice": "M1",
+      "language": "fr",
+      "total_steps": 8,
+      "speed": 1.5,
+      "sample_rate": 44100
+    }
+  }
+}

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090b0e">
+  <meta name="description" content="Jarvis local AI assistant">
+  <title>Jarvis</title>
+  <link rel="stylesheet" href="/static/css/app.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-mark" aria-hidden="true">J</div>
+        <div class="brand-copy">
+          <div class="brand-name">JARVIS</div>
+          <div class="brand-subtitle">LOCAL INTELLIGENCE</div>
+        </div>
+        <button class="voice-mode-button" id="voice-mode-button" type="button" aria-label="Voice mode" title="Voice mode"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14.5a3.5 3.5 0 0 0 3.5-3.5V6a3.5 3.5 0 0 0-7 0v5a3.5 3.5 0 0 0 3.5 3.5Zm6-3.5a1 1 0 0 0-2 0 4 4 0 0 1-8 0 1 1 0 0 0-2 0 6 6 0 0 0 5 5.91V19H8a1 1 0 0 0 0 2h8a1 1 0 0 0 0-2h-3v-2.09A6 6 0 0 0 18 11Z"/></svg></button>
+        
+      </div>
+
+      <button class="new-chat-button" id="new-chat">
+        <span class="plus">+</span>
+        <span>New conversation</span>
+      </button>
+
+      <div class="history-heading">
+        <span>CONVERSATIONS</span>
+      </div>
+      <nav class="conversation-list" id="conversation-list" aria-label="Conversation history"></nav>
+
+      <div class="sidebar-footer">
+        <div class="system-status">
+          <span class="status-dot"></span>
+          <div>
+            <strong>Local system</strong>
+            <span>Connected</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+    <section class="chat-panel">
+      <header class="topbar">
+        <button class="icon-button mobile-menu" id="open-sidebar" aria-label="Open menu">☰</button>
+
+        <div class="topbar-title">
+          <button class="conversation-title-button" id="conversation-title" type="button" title="Rename conversation">
+            New conversation
+          </button>
+          <span class="connection-pill">
+            <span class="status-dot"></span>
+            Online
+          </span>
+        </div>
+
+      </header>
+
+      <main class="chat-scroll" id="chat-scroll">
+        <div class="chat-content" id="chat-content">
+          <section class="welcome" id="welcome">
+            <div class="orb">
+              <div class="orb-core">J</div>
+            </div>
+            <h1>Good to see you.</h1>
+            <p>Ask Jarvis anything. Your conversation stays on your local system.</p><button class="voice-mode-button" id="voice-mode-button" type="button" aria-label="Voice mode" title="Voice mode"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14.5a3.5 3.5 0 0 0 3.5-3.5V6a3.5 3.5 0 0 0-7 0v5a3.5 3.5 0 0 0 3.5 3.5Zm6-3.5a1 1 0 0 0-2 0 4 4 0 0 1-8 0 1 1 0 0 0-2 0 6 6 0 0 0 5 5.91V19H8a1 1 0 0 0 0 2h8a1 1 0 0 0 0-2h-3v-2.09A6 6 0 0 0 18 11Z"/></svg></button>
+            <div class="suggestions">
+              <button type="button" data-prompt="Search my diary">Search my diary</button>
+              <button type="button" data-prompt="Search the web">Search the web</button>
+            </div>
+          </section>
+        </div>
+        <button class="jump-to-latest" id="jump-to-latest" type="button" aria-label="Jump to latest message" title="Jump to latest message">
+          ↓
+        </button>
+      </main>
+
+      <footer class="composer-area">
+        <div class="system-prompt-panel" id="system-prompt-panel">
+          <div class="system-prompt-header">
+            <div>
+              <strong>System prompt</strong>
+              <span>Applied to every new request</span>
+            </div>
+            <button type="button" class="system-prompt-clear" id="system-prompt-clear">Clear</button>
+          </div>
+          <textarea id="system-prompt-input" rows="4" maxlength="12000" placeholder="Tell Jarvis how it should behave…"></textarea>
+          <div class="system-prompt-actions">
+            <button type="button" class="system-prompt-save" id="system-prompt-save">Save</button>
+          </div>
+        </div>
+        <button class="system-prompt-button" id="system-prompt-button" type="button" title="System prompt" aria-label="System prompt">
+          <span>⚙</span>
+          <span>System prompt</span>
+        </button>
+        <form class="composer" id="composer">
+          <div class="effort-selector-wrap">
+            <label class="sr-only" for="effort-selector">Response mode</label>
+            <select id="effort-selector" class="effort-selector" aria-label="Response mode" title="Response mode">
+              <option value="normal">Normal</option>
+              <option value="fast">Fast</option>
+            </select>
+          </div>
+          <textarea
+            id="message-input"
+            rows="1"
+            maxlength="20000"
+            autocomplete="off"
+            placeholder="Message Jarvis…"
+            aria-label="Message Jarvis"
+          ></textarea>
+          <button class="send-button" id="send-button" type="submit" aria-label="Send message" title="Send message">
+            <span class="send-icon" aria-hidden="true">↑</span>
+            <span class="stop-icon" aria-hidden="true">■</span>
+          </button>
+        </form>
+        <div class="composer-hint">Enter to send · Shift + Enter for a new line</div>
+      </footer>
+    </section>
+  </div>
+
+  <script type="module" src="/static/js/app.js"></script>
+<section class="voice-mode-page" id="voice-mode-page" aria-hidden="true">
+<header class="voice-mode-topbar"><button class="voice-back-button" id="voice-back-button" type="button">←</button><div class="voice-mode-title">Voice Mode</div><div class="voice-mode-status" id="voice-mode-status">Ready</div></header>
+<main class="voice-mode-main"><div class="voice-mode-orb-wrap"><div class="voice-mode-ripple"></div><div class="voice-mode-ripple"></div><div class="voice-mode-ripple"></div>
+<button class="voice-hold-button" id="voice-hold-button" type="button" aria-label="Hold to speak"><span class="voice-bubble-core" aria-hidden="true"></span></button></div>
+<div class="voice-mode-instruction" id="voice-mode-instruction">Hold to speak</div><div class="voice-mode-transcript" id="voice-mode-transcript"></div></main></section></body>
+</html>

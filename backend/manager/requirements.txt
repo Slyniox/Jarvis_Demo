@@ -1,0 +1,28 @@
+# Chat API and HTTP clients
+fastapi
+uvicorn
+httpx
+requests
+
+# Diary retrieval, embeddings, and reranking
+numpy
+faiss-cpu
+sentence-transformers
+transformers
+torch
+sympy
+
+# Web retrieval and page processing
+firecrawl-py
+trafilatura
+beautifulsoup4
+markdownify
+tiktoken
+
+# Voice proxy and local text-to-speech
+aiohttp
+websockets
+supertonic
+
+# Offline diary translation utility
+openai
