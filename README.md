@@ -226,4 +226,4 @@ The current checkout does not contain a `tests/` directory. Files named `tester.
 
 ## License
 
-No license is currently specified in this repository. Add a license before inviting reuse or redistribution; without one, standard copyright applies.
+No license is currently specified for this repository.
