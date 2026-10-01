@@ -44,7 +44,7 @@ def search_searxng(query: str, max_results: int = 1):
     return urls
 
 
-def search_firecrawl(query: str, max_results: int = 2):
+def search_firecrawl(query: str, max_results: int = 6):
     print(f"[WEB SEARCH] Query: {query}")
     try:
         result = firecrawl.search(

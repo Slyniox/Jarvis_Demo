@@ -6,7 +6,7 @@
     "host": "0.0.0.0",
     "client_host": "127.0.0.1",
     "port": 8081,
-    "ctx": 25000,
+    "ctx": 12000,
     "ngl": 99,
     "args": [
       "-fa", "1",
@@ -24,7 +24,14 @@
       "-b", "4096",
       "-ub", "4096",
       "--reasoning-preserve",
-      "--cache-ram", "2048"
+      "--cache-ram", "2048",
+      "--no-mmproj",
+      "--spec-type", "ngram-mod",
+      "--spec-ngram-mod-n-match", "45",
+      "--spec-ngram-mod-n-min", "30",
+      "--spec-ngram-mod-n-max", "64",
+      "--reasoning-budget", "1000",
+      "--reasoning-budget-message", "\"I have reasoned enough, I will now provide an answer.\""
     ]
   },
   "chat_proxy": {
@@ -39,6 +46,7 @@
   },
   "pipelines": {
     "normal": {
+      "type": "normal",
       "top_k": 30,
       "max_full_entries": 5,
       "max_summaries": 3,
@@ -46,11 +54,12 @@
       "max_web_queries": 3
     },
     "fast": {
-      "top_k": 15,
-      "max_full_entries": 2,
-      "max_summaries": 1,
-      "max_diary_queries": 1,
-      "max_web_queries": 1
+      "type": "fast",
+      "top_k": 0,
+      "max_full_entries": 0,
+      "max_summaries": 0,
+      "max_diary_queries": 0,
+      "max_web_queries": 0
     }
   },
   "web": {
